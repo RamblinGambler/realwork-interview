@@ -1,6 +1,6 @@
 // Unused letters
 
-function unusedLetters(str: string): string {
+export function unusedLetters(str: string): string {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
   const alphabetArray = alphabet.split('');
 
@@ -10,7 +10,7 @@ function unusedLetters(str: string): string {
     .join('');
 }
 
-function unusedLettersSet(str: string): string {
+export function unusedLettersSet(str: string): string {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
   const alphabetSet = new Set(alphabet);
 
@@ -18,8 +18,9 @@ function unusedLettersSet(str: string): string {
   for (const letter of str) {
     alphabetSet.delete(letter);
   }
+
   // Array.from is O(n) but since its not nested it doesn't quadratically increase the time complexity
-  return Array.from(alphabet).join('');
+  return Array.from(alphabetSet).join('');
 }
 
 console.log(unusedLetters('abwqidjnidqwjndqwic'));
@@ -38,7 +39,10 @@ const PARTICLE = 'X';
  * @param speed Movement speed of particles
  * @returns Array of states showing particle movement until particles leave the space
  */
-function animate(initialPosition: string, speed: number): string[] {
+export function animate(
+  initialPosition: string,
+  speed: number
+): string[] {
   const result: string[] = [];
   const length = initialPosition.length;
   let currentState = initialPosition.split('');
